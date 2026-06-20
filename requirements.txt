@@ -1,7 +1,0 @@
-streamlit
-google-generativeai
-pandas
-numpy
-pypdf
-python-pptx
-plotly
