@@ -1,0 +1,9 @@
+streamlit
+google-generativeai
+pandas
+numpy
+pypdf
+python-pptx
+plotly
+rank_bm25
+jieba
