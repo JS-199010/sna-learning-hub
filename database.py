@@ -13,6 +13,22 @@ def get_supabase_client() -> Client:
             secrets = json.load(f)
             url = secrets.get("SUPABASE_URL", "")
             key = secrets.get("SUPABASE_KEY", "")
+    else:
+        # Fallback for Streamlit Cloud
+        import streamlit as st
+        try:
+            url = st.secrets["SUPABASE_URL"]
+            key = st.secrets["SUPABASE_KEY"]
+        except Exception:
+            url = os.environ.get("SUPABASE_URL", "")
+            key = os.environ.get("SUPABASE_KEY", "")
+            
+    if not url or not key:
+        print("Warning: Supabase credentials not found. Some features may not work.")
+        # Dummy initialization to prevent crashing on import, though it will fail on actual queries
+        url = url or "https://placeholder.supabase.co"
+        key = key or "placeholder"
+        
     return create_client(url, key)
 
 supabase = get_supabase_client()
