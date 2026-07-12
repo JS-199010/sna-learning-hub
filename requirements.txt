@@ -7,3 +7,4 @@ python-pptx
 plotly
 rank_bm25
 jieba
+supabase
